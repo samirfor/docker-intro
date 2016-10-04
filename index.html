@@ -4,10 +4,10 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Intro to Docker</title>
+		<title>Introdução ao Docker</title>
 
-		<meta name="description" content="Intro to Docker">
-		<meta name="author" content="Docker Inc, adapted by John Lewis">
+		<meta name="description" content="Introdução ao Docker">
+		<meta name="author" content="Docker Inc, adaptado por Samir C. Costa">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -37,28 +37,29 @@
 		<div class="reveal">
 
 		<div class="slides">
-	
+
 <section>
-	<h3>Introduction to</h3>
+	<h3>Introdução ao</h3>
 	<div>
 		<img src="docker-img/logo.svg" style="border: none; width: 70%; box-shadow: none; background: none;"/>
 		<p>
 			<a href="https://docs.docker.com/" target="_blank">docs.docker.com</a>
 		</p>
+		<p style="font-size: 18px;">Adaptado por <a href=mailto:samirfor@gmail.com>Samir C. Costa</a></p>
 	</div>
 </section>
 
 <section>
 	<h3>Agenda</h3>
 	<ul>
-		<li class="fragment" data-fragment-index="0">Overview</li>
-		<li class="fragment" data-fragment-index="1">Basic concepts</li>
-		<li class="fragment" data-fragment-index="2">Architecture</li>
-		<li class="fragment" data-fragment-index="3">VMs vs Containers</li>
+		<li class="fragment" data-fragment-index="0">Visão geral</li>
+		<li class="fragment" data-fragment-index="1">Conceitos básicos</li>
+		<li class="fragment" data-fragment-index="2">Arquitetura</li>
+		<li class="fragment" data-fragment-index="3">VMs x Containers</li>
 		<li class="fragment" data-fragment-index="4">Docker engine</li>
 		<li class="fragment" data-fragment-index="5">Docker machine</li>
 		<li class="fragment" data-fragment-index="6">Docker Hub</li>
-		<li class="fragment" data-fragment-index="7">Advanced Tools</li>
+		<li class="fragment" data-fragment-index="7">Ferramentas Avançadas</li>
 		<li class="fragment" data-fragment-index="8">Workflow</li>
 		<li class="fragment" data-fragment-index="9"><strong>DEMO</strong></li>
 	</ul>
@@ -66,56 +67,56 @@
 </section>
 
 <section>
-	<h3>The Challenge</h3>
+	<h3>O Desafio</h3>
 	<p>
 		<img src="docker-img/the-challenge.png">
 	</p>
 </section>
 
 <section>
-	<h3>Deployment Challange</h3>
+	<h3>Desafio do Desenvolvimento</h3>
 	<p>
 		<img src="docker-img/the-matrix-from-hell.png">
 	</p>
 </section>
 
 <section>
-	<h3>Cargo Transport Pre-1960</h3>
+	<h3>Transportes de Carga Pre-1960</h3>
 	<p>
 		<img src="docker-img/cargo-transport-pre-1960.png">
 	</p>
 </section>
 
 <section>
-	<h3>The same probelm</h3>
+	<h3>O mesmo problema</h3>
 	<p>
 		<img src="docker-img/also-a-matrix-from-hell.png">
 	</p>
 </section>
 
 <section>
-	<h3>Solution: Intermodal Shipping Container</h3>
+	<h3>Solução: Entrega de Container Intermodal</h3>
 	<p>
 		<img src="docker-img/intermodal-shipping-container.png">
 	</p>
 </section>
 
 <section>
-	<h3>Docker is a Container System for Code</h3>
+	<h3>Docker é um Sistema de Container para Código</h3>
 	<p>
 		<img src="docker-img/shipping-container-for-code.png">
 	</p>
 </section>
 
 <section>
-	<h3>Deployment Matrix</h3>
+	<h3>Matriz de Desenvolvimento</h3>
 	<p>
 		<img src="docker-img/eliminates-matrix-from-hell.png">
 	</p>
 </section>
 
 <section>
-	<h3>Common Environment</h3>
+	<h3>Ambiente Comum</h3>
 	<h4>Dev QA Ops</h4>
 	<p>
 		<img src="docker-img/works-on-my-machine.jpg">
@@ -123,59 +124,59 @@
 </section>
 
 <section>
-	<h3>Why Developers Care</h3>
+	<h3>Motivação para desenvolvedores</h3>
 	<p style="text-align: left;">
-		Build once and run anywhere:
+		Build uma vez e executa em qualquer lugar:
 	</p>
 	<ul>
-		<li class="fragment" data-fragment-index="0">A clean, secure and predictiable environment for apps</li>
-		<li class="fragment" data-fragment-index="1">No worries about missing dependencies</li>
-		<li class="fragment" data-fragment-index="3">Automate testing and packaging</li>
-		<li class="fragment" data-fragment-index="4">Reduce/eliminate concerns about compatibility on different platforms</li>
+		<li class="fragment" data-fragment-index="0">Um ambiente limpo, seguro e previsível para apps</li>
+		<li class="fragment" data-fragment-index="1">Não se preocupa com dependências que estão faltando</li>
+		<li class="fragment" data-fragment-index="3">Teste e empacotamento automático</li>
+		<li class="fragment" data-fragment-index="4">Reduz/elimina esforços acerca de compatibilidade em diferentes plataformas</li>
 	</ul>
 </section>
 
 <section>
-	<h3>Why Operations Care</h3>
+	<h3>Motivação para operadores/sysadmins</h3>
 	<p style="text-align: left;">
-	Configure once and run anything:
+	Configure uma vez e execute qualquer coisa:
 	</p>
 	<ul>
-		<li class="fragment" data-fragment-index="0">Make the entire lifecycle more efficient, consistent, and repeatable.</li>
-		<li class="fragment" data-fragment-index="2">Eliminate inconsistencies between development, test, production, and customer environments.</li>
-		<li class="fragment" data-fragment-index="4">Speed and reliability of continuous deployment and continuous integration systems.</li>
-		<li class="fragment" data-fragment-index="5">Significant performance, lower costs, deployment, and portability (in comparision to VMs).</li>
+		<li class="fragment" data-fragment-index="0">Tornar todo o ciclo de vida mais eficiente, consistente e repetível.</li>
+		<li class="fragment" data-fragment-index="2">Eliminar as inconsistências entre os ambientes de desenvolvimento, teste, produção e cliente.</li>
+		<li class="fragment" data-fragment-index="4">Velocidade e confiabilidade dos sistemas de integração contínua e implantação.</li>
+		<li class="fragment" data-fragment-index="5">Significativo desempenho, custos mais baixos, implantação e portabilidade (em comparação com VMs).</li>
 	</ul>
 </section>
 
 <section>
-	<h3>Architecture</h3>
+	<h3>Arquitetura</h3>
 	<img src="docker-img/architecture.svg">
 </section>
 
 <section>
-	<h3>VMs vs Containers</h3>
+	<h3>VMs x Containers</h3>
 	<p>
 		<img src="docker-img/containers-vs-vms.png">
 	</p>
 </section>
 
 <section>
-	<h3>Why are Docker Containers Lightweight?</h3>
+	<h3>Por que Containers Docker são leves?</h3>
 	<p>
 		<img src="docker-img/why-are-containers-lightwight.png">
 	</p>
 </section>
 
 <section>
-	<h3>What are the Basics of a Docker System?</h3>
+	<h3>Quais os princípios do Sistema Docker?</h3>
 	<p>
 		<img src="docker-img/basics-of-docker-system.png">
 	</p>
 </section>
 
 <section>
-	<h3>Changes and Updates</h3>
+	<h3>Mudanças e Atualizações</h3>
 	<p>
 		<img src="docker-img/changes-and-updates.png">
 	</p>
@@ -188,46 +189,46 @@
 	</p>
 </section>
 <section>
-	<h3>Advanced Tools</h3>
+	<h3>Ferramentas Avançadas</h3>
 	<ul>
-		<li class="fragment" data-fragment-index="0"><strong>Docker Compose</strong>: a tool for defining and running multi-container Docker applications</li>
-		<li class="fragment" data-fragment-index="1"><strong>Docker Swarm</strong>: native clustering tool which turns a pool of Docker hosts into a single, virtual Docker host</li>
-		<li class="fragment" data-fragment-index="2"><strong>Docker Cloud</strong>: deploying node clusters and sevices to cloud service providers (AWS, DigitalOcean, etc...)</li>
+		<li class="fragment" data-fragment-index="0"><strong>Docker Compose</strong>: uma ferramenta para a definição e execução de aplicativos Docker multi-containers</li>
+		<li class="fragment" data-fragment-index="1"><strong>Docker Swarm</strong>: ferramenta nativa de clusterização que torna um pool de hosts Docker em um único host Docker virtual</li>
+		<li class="fragment" data-fragment-index="2"><strong>Docker Cloud</strong>: deploying de clusters e serviços para provedores de serviço cloud (AWS, DigitalOcean etc)</li>
 	</ul>
 </section>
 
 <section>
-	<h3>Kitematic App for Mac OS X</h3>
+	<h3>Kitematic para Mac OS X</h3>
 	<img src="docker-img/kinematic_1.png" style="width: 40%;">
 	<img src="docker-img/kinematic_2.png" style="width: 40%;">
 	<p>
-		Currently <strong>BETA</strong>.
+		Atualmente em <strong>BETA</strong>.
 	</p>
 </section>
 
 <section>
-	<h3>Possible Workflow</h3>
+	<h3>Possível Workflow</h3>
 		<img src="docker-img/workflow.png">
 	</p>
 </section>
 
 <section>
-	<h1>Demo Time</h1>
+	<h1>Hora do Demo</h1>
 	<p>
 		<img src="docker-img/demo.png">
 	</p>
 </section>
 
 <section>
-	<h3>Want to Learn More?</h3>
+	<h3>Quer aprender mais?</h3>
 	<ul>
-		<li>Docs: <a href="http://docs.docker.com/">docs.docker.com</a></li>
+		<li>Documentação oficial: <a href="http://docs.docker.com/">docs.docker.com</a></li>
 		<li>Hub: <a href="http://hub.docker.com/">hub.docker.com</a></li>
 		<li>Cloud: <a href="http://cloud.docker.com>">cloud.docker.com</a></li>
 		<li>Github: <a href="http://github.com/dotcloud/docker">dotcloud/docker</a></li>
 		<li>Google Group: <a href="https://groups.google.com/forum/#!forum/docker-user">docker-user</a></li>
 		<li>Twitter: <a href="http://twitter.com/docker">@docker</a></li>
-		<li>Meetups: <a href="http://www.docker.io/meetups">www.docker.io/meetups</a></li>
+		<li>Encontros: <a href="http://www.docker.io/meetups">www.docker.io/meetups</a></li>
 	</ul>
 </section>
 
@@ -241,13 +242,13 @@
 			// Full list of configuration options available here:
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
-				
+
 				width: 1366,
 				height: 768,
 				margin: 0.1,
 				minScale: 0.2,
 				maxScale: 1.2,
-	
+
 				controls: true,
 				progress: true,
 				history: true,

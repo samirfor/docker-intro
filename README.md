@@ -1,12 +1,12 @@
-Introduction to Docker
+Introdução ao Docker
 ===============
 
-[![Docker](http://ssokurenko.github.io/docker-intro/docker-img/logo.svg)](http://ssokurenko.github.io/docker-intro/)
+[![Docker](http://samirfor.github.io/docker-intro/docker-img/logo.svg)](http://samirfor.github.io/docker-intro/)
 
-This is an Intro to Docker slide deck built using [Reveal.js](https://github.com/hakimel/reveal.js).
+Esta é uma apresentação sobre Introdução ao Docker feita usando [Reveal.js](https://github.com/hakimel/reveal.js).
 
-Based on project: [https://github.com/pointful/docker-intro](https://github.com/pointful/docker-intro) and [Docker Slideshare](http://www.slideshare.net/dotCloud) materials.
+Baseado no projeto: [https://github.com/pointful/docker-intro](https://github.com/pointful/docker-intro) e nos materiais do [Docker Slideshare](http://www.slideshare.net/dotCloud).
 
-Thanks to everyone at Docker, Inc for all the great work they are doing!
+Obrigado a todos da Docker Inc. pelo ótimo trabalho que vem sendo feito!
 
-### [View Presentation](http://ssokurenko.github.io/docker-intro/)
+### [Ver a Apresentação](http://samirfor.github.io/docker-intro/)
