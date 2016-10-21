@@ -1,278 +1,418 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+  <head>
+    <meta charset="utf-8">
 
-		<title>Introdução ao Docker</title>
+    <title>Introdução ao Docker</title>
 
-		<meta name="description" content="Introdução ao Docker">
-		<meta name="author" content="Docker Inc, adaptado por Samir C. Costa">
+    <meta name="description" content="Introdução ao Docker">
+    <meta name="author" content="Docker Inc, adaptado por Samir C. Costa">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/docker.css" id="theme">
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/docker.css" id="theme">
 
-		<link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
 
-		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
-		<script>
-			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
-		</script>
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
 
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
 
-	<body>
+  <body>
 
-		<div class="reveal">
+    <div class="reveal">
 
-		<div class="slides">
+    <div class="slides">
 
 <section>
-	<h3>Introdução ao</h3>
-	<div>
-		<img src="docker-img/logo.svg" style="border: none; width: 70%; box-shadow: none; background: none;"/>
-		<p>
-			<a href="https://docs.docker.com/" target="_blank">docs.docker.com</a>
-		</p>
-		<p style="font-size: 18px;">Adaptado por <a href=mailto:samirfor@gmail.com>Samir C. Costa</a></p>
-	</div>
+  <h3>Introdução ao</h3>
+  <div>
+    <img src="docker-img/logo.svg" style="border: none; width: 70%; box-shadow: none; background: none;"/>
+    <p>
+      <a href="https://docs.docker.com/" target="_blank">docs.docker.com</a>
+    </p>
+    <p style="font-size: 18px;">Adaptado por <a href=mailto:samirfor@gmail.com>Samir C. Costa</a></p>
+  </div>
 </section>
 
 <section>
-	<h3>Agenda</h3>
-	<ul>
-		<li class="fragment" data-fragment-index="0">Visão geral</li>
-		<li class="fragment" data-fragment-index="1">Conceitos básicos</li>
-		<li class="fragment" data-fragment-index="2">Arquitetura</li>
-		<li class="fragment" data-fragment-index="3">VMs x Containers</li>
-		<li class="fragment" data-fragment-index="4">Docker engine</li>
-		<li class="fragment" data-fragment-index="5">Docker machine</li>
-		<li class="fragment" data-fragment-index="6">Docker Hub</li>
-		<li class="fragment" data-fragment-index="7">Ferramentas Avançadas</li>
-		<li class="fragment" data-fragment-index="8">Workflow</li>
-		<li class="fragment" data-fragment-index="9"><strong>DEMO</strong></li>
-	</ul>
+  <h3>Sumário</h3>
+  <ul>
+    <li class="fragment" data-fragment-index="0">Visão geral</li>
+    <li class="fragment" data-fragment-index="1">Conceitos básicos</li>
+    <li class="fragment" data-fragment-index="2">Arquitetura</li>
+    <li class="fragment" data-fragment-index="3">VMs x Containers</li>
+    <li class="fragment" data-fragment-index="4">Docker engine</li>
+    <li class="fragment" data-fragment-index="5">Docker machine</li>
+    <li class="fragment" data-fragment-index="6">Docker Hub</li>
+    <li class="fragment" data-fragment-index="7">Ferramentas Avançadas</li>
+    <li class="fragment" data-fragment-index="8">Micro serviços</li>
+    <li class="fragment" data-fragment-index="9">Workflow</li>
+    <li class="fragment" data-fragment-index="10"><strong>DEMO</strong></li>
+  </ul>
 
 </section>
 
 <section>
-	<h3>O Desafio</h3>
-	<p>
-		<img src="docker-img/the-challenge.png">
-	</p>
+  <h3>O Desafio</h3>
+  <p>
+    <img src="docker-img/the-challenge.png">
+  </p>
 </section>
 
 <section>
-	<h3>Desafio do Desenvolvimento</h3>
-	<p>
-		<img src="docker-img/the-matrix-from-hell.png">
-	</p>
+  <h3>Desafio do Desenvolvimento</h3>
+  <p>
+    <img src="docker-img/the-matrix-from-hell.png">
+  </p>
 </section>
 
 <section>
-	<h3>Transportes de Carga Pre-1960</h3>
-	<p>
-		<img src="docker-img/cargo-transport-pre-1960.png">
-	</p>
+  <h3>Transportes de Carga Pre-1960</h3>
+  <p>
+    <img src="docker-img/cargo-transport-pre-1960.png">
+  </p>
 </section>
 
 <section>
-	<h3>O mesmo problema</h3>
-	<p>
-		<img src="docker-img/also-a-matrix-from-hell.png">
-	</p>
+  <h3>O mesmo problema</h3>
+  <p>
+    <img src="docker-img/also-a-matrix-from-hell.png">
+  </p>
 </section>
 
 <section>
-	<h3>Solução: Entrega de Container Intermodal</h3>
-	<p>
-		<img src="docker-img/intermodal-shipping-container.png">
-	</p>
+  <h3>Solução: Entrega de Container Intermodal</h3>
+  <p>
+    <img src="docker-img/intermodal-shipping-container.png">
+  </p>
 </section>
 
 <section>
-	<h3>Docker é um Sistema de Container para Código</h3>
-	<p>
-		<img src="docker-img/shipping-container-for-code.png">
-	</p>
+  <h3>Docker é um Sistema de Container para Código</h3>
+  <p>
+    <img src="docker-img/shipping-container-for-code.png">
+  </p>
 </section>
 
 <section>
-	<h3>Matriz de Desenvolvimento</h3>
-	<p>
-		<img src="docker-img/eliminates-matrix-from-hell.png">
-	</p>
+  <h3>Matriz de Desenvolvimento</h3>
+  <p>
+    <img src="docker-img/eliminates-matrix-from-hell.png">
+  </p>
 </section>
 
 <section>
-	<h3>Ambiente Comum</h3>
-	<h4>Dev QA Ops</h4>
-	<p>
-		<img src="docker-img/works-on-my-machine.jpg">
-	</p>
+  <h3>Ambiente Comum</h3>
+  <h4>Dev QA Ops</h4>
+  <p>
+    <img src="docker-img/works-on-my-machine.jpg">
+  </p>
 </section>
 
 <section>
-	<h3>Motivação para desenvolvedores</h3>
-	<p style="text-align: left;">
-		Build uma vez e executa em qualquer lugar:
-	</p>
-	<ul>
-		<li class="fragment" data-fragment-index="0">Um ambiente limpo, seguro e previsível para apps</li>
-		<li class="fragment" data-fragment-index="1">Não se preocupa com dependências que estão faltando</li>
-		<li class="fragment" data-fragment-index="3">Teste e empacotamento automático</li>
-		<li class="fragment" data-fragment-index="4">Reduz/elimina esforços acerca de compatibilidade em diferentes plataformas</li>
-	</ul>
+  <h3>Motivação para desenvolvedores</h3>
+  <p style="text-align: left;">
+    Build uma vez e executa em qualquer lugar:
+  </p>
+  <ul>
+    <li class="fragment" data-fragment-index="0">Um ambiente limpo, seguro e previsível para apps</li>
+    <li class="fragment" data-fragment-index="1">Não se preocupa com dependências que estão faltando</li>
+    <li class="fragment" data-fragment-index="3">Teste e empacotamento automático</li>
+    <li class="fragment" data-fragment-index="4">Reduz/elimina esforços acerca de compatibilidade em diferentes plataformas</li>
+  </ul>
 </section>
 
 <section>
-	<h3>Motivação para operadores/sysadmins</h3>
-	<p style="text-align: left;">
-	Configure uma vez e execute qualquer coisa:
-	</p>
-	<ul>
-		<li class="fragment" data-fragment-index="0">Tornar todo o ciclo de vida mais eficiente, consistente e repetível.</li>
-		<li class="fragment" data-fragment-index="2">Eliminar as inconsistências entre os ambientes de desenvolvimento, teste, produção e cliente.</li>
-		<li class="fragment" data-fragment-index="4">Velocidade e confiabilidade dos sistemas de integração contínua e implantação.</li>
-		<li class="fragment" data-fragment-index="5">Significativo desempenho, custos mais baixos, implantação e portabilidade (em comparação com VMs).</li>
-	</ul>
+  <h3>Motivação para operadores/sysadmins</h3>
+  <p style="text-align: left;">
+  Configure uma vez e execute qualquer coisa:
+  </p>
+  <ul>
+    <li class="fragment" data-fragment-index="0">Tornar todo o ciclo de vida mais eficiente, consistente e repetível.</li>
+    <li class="fragment" data-fragment-index="2">Eliminar as inconsistências entre os ambientes de desenvolvimento, teste, produção e cliente.</li>
+    <li class="fragment" data-fragment-index="4">Velocidade e confiabilidade dos sistemas de integração contínua e implantação.</li>
+    <li class="fragment" data-fragment-index="5">Significativo desempenho, custos mais baixos, implantação e portabilidade (em comparação com VMs).</li>
+  </ul>
 </section>
 
 <section>
-	<h3>Arquitetura</h3>
-	<img src="docker-img/architecture.svg">
+  <h3>Arquitetura</h3>
+  <img src="docker-img/architecture.svg">
 </section>
 
 <section>
-	<h3>VMs x Containers</h3>
-	<p>
-		<img src="docker-img/containers-vs-vms.png">
-	</p>
+  <h3>VMs x Containers</h3>
+  <p>
+    <img src="docker-img/containers-vs-vms.png">
+  </p>
 </section>
 
 <section>
-	<h3>Por que Containers Docker são leves?</h3>
-	<p>
-		<img src="docker-img/why-are-containers-lightwight.png">
-	</p>
+  <h3>Por que Containers Docker são leves?</h3>
+  <p>
+    <img src="docker-img/why-are-containers-lightwight.png">
+  </p>
 </section>
 
 <section>
-	<h3>Quais os princípios do Sistema Docker?</h3>
-	<p>
-		<img src="docker-img/basics-of-docker-system.png">
-	</p>
+  <h3>Quais os princípios do Sistema Docker?</h3>
+  <p>
+    <img src="docker-img/basics-of-docker-system.png">
+  </p>
 </section>
 
 <section>
-	<h3>Mudanças e Atualizações</h3>
-	<p>
-		<img src="docker-img/changes-and-updates.png">
-	</p>
+  <h3>Mudanças e Atualizações</h3>
+  <p>
+    <img src="docker-img/changes-and-updates.png">
+  </p>
 </section>
 
 <section>
-	<h3>hub.docker.com</h3>
-	<p>
-		<img src="docker-img/docker-hub.png">
-	</p>
+  <h3>hub.docker.com</h3>
+  <p>
+    <img src="docker-img/docker-hub.png">
+  </p>
 </section>
 <section>
-	<h3>Ferramentas Avançadas</h3>
-	<ul>
-		<li class="fragment" data-fragment-index="0"><strong>Docker Compose</strong>: uma ferramenta para a definição e execução de aplicativos Docker multi-containers</li>
-		<li class="fragment" data-fragment-index="1"><strong>Docker Swarm</strong>: ferramenta nativa de clusterização que torna um pool de hosts Docker em um único host Docker virtual</li>
-		<li class="fragment" data-fragment-index="2"><strong>Docker Cloud</strong>: deploying de clusters e serviços para provedores de serviço cloud (AWS, DigitalOcean etc)</li>
-	</ul>
-</section>
-
-<section>
-	<h3>Kitematic para Mac OS X</h3>
-	<img src="docker-img/kinematic_1.png" style="width: 40%;">
-	<img src="docker-img/kinematic_2.png" style="width: 40%;">
-	<p>
-		Atualmente em <strong>BETA</strong>.
-	</p>
+  <h3>Ferramentas Avançadas</h3>
+  <ul>
+    <li class="fragment" data-fragment-index="0"><strong>Docker Compose</strong>: uma ferramenta para a definição e execução de aplicativos Docker multi-containers</li>
+    <li class="fragment" data-fragment-index="1"><strong>Docker Swarm</strong>: ferramenta nativa de clusterização que torna um pool de hosts Docker em um único host Docker virtual</li>
+    <li class="fragment" data-fragment-index="2"><strong>Docker Cloud</strong>: deploying de clusters e serviços para provedores de serviço cloud (AWS, DigitalOcean etc)</li>
+  </ul>
 </section>
 
 <section>
-	<h3>Possível Workflow</h3>
-		<img src="docker-img/workflow.png">
-	</p>
+  <h2><img src="docker-img/icon_lecture.png" class="slide_icon" alt="icon"> Docker Compose</h2>
 </section>
 
 <section>
-	<h1>Hora do Demo</h1>
-	<p>
-		<img src="docker-img/demo.png">
-	</p>
+  <h2>O que é Docker Compose?</h2>
+  <ul>
+    <li class="fragment" data-fragment-index="0">Ferramanta para criar e administrar aplicações multicontainers.</li>
+    <li class="fragment" data-fragment-index="1">Containers são definidos em um único arquivo chamado <strong>docker-compose.yml</strong></li>
+    <li class="fragment" data-fragment-index="2">Cada container executa um componente/serviço particular da sua aplicação. Por exemplo:</li>
+    <ul>
+      <li class="fragment" data-fragment-index="2">Web Front End</li>
+      <li class="fragment" data-fragment-index="2">Autenticação de Usuário</li>
+      <li class="fragment" data-fragment-index="2">Gateway de Pagamentos</li>
+      <li class="fragment" data-fragment-index="2">Banco de Dados</li>
+    </ul>
+    <li class="fragment" data-fragment-index="3">Links entre container são definidos.</li>
+    <li class="fragment" data-fragment-index="4">Compose vai rodar todos containers da sua aplicação em um único comando.</li>
+  </ul>
 </section>
 
 <section>
-	<h3>Quer aprender mais?</h3>
-	<ul>
-		<li>Documentação oficial: <a href="http://docs.docker.com/">docs.docker.com</a></li>
-		<li>Hub: <a href="http://hub.docker.com/">hub.docker.com</a></li>
-		<li>Cloud: <a href="http://cloud.docker.com>">cloud.docker.com</a></li>
-		<li>Github: <a href="http://github.com/dotcloud/docker">dotcloud/docker</a></li>
-		<li>Google Group: <a href="https://groups.google.com/forum/#!forum/docker-user">docker-user</a></li>
-		<li>Twitter: <a href="http://twitter.com/docker">@docker</a></li>
-		<li>Encontros: <a href="http://www.docker.io/meetups">www.docker.io/meetups</a></li>
-	</ul>
+  <h2>Docker Compose nos bastidores</h2>
+  <ul>
+    <li>Aplicações estão migrando da velha arquitetura monolítica.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Os pontos fracos da estrutura monolítica:</h2>
+  <ul>
+    <li class="fragment" data-fragment-index="0">Difícil de atualizar cada componente individualmente. É necessário atualizar a pilha inteira.</li>
+    <li class="fragment" data-fragment-index="1">Amarrada a um conjunto de tecnologias particular.</li>
+    <li class="fragment" data-fragment-index="2">Se um componente cai, todo o aplicativo pode cair. Ninguém pode usar seu website.</li>
+    <li class="fragment" data-fragment-index="3">IDE sobrecarregada.</li>
+    <li class="fragment" data-fragment-index="4">Não é o ideal para escalar porque você tem que escalar a pilha inteira.</li>
+  </ul>
+</section>
+
+<section>
+  <h3>Arquitetura de micro serviços é a nova onda para desenvolver apps!</h3>
+</section>
+
+<section>
+  <h2>Arquitetura Monolítica</h2>
+  <p><img src="docker-img/monolithic architecture.PNG" alt="monolithic architecture"></p>
+</section>
+
+<section>
+  <h2>Arquitetura de Micro Serviços</h2>
+  <p><img src="docker-img/Microservice architecture.PNG" alt="Microservice architecture"></p>
+</section>
+
+<section>
+  <h2>Vantagens dos Micro Serviços</h2>
+  <ul>
+    <li>Cada serviço pode ser desenvolvido e atualizado independentemente.</li>
+    <li>Mais fácil para desenvolvedores entender: <strong>foco apenas no seu serviço</strong>.</li>
+    <li>Se um serviço cair, a aplicação deve continuar rodando, embora com funções reduzidas.</li>
+    <li>Aplicação se torna mais fácil para solucionar problemas (debugar).</li>
+    <li>A aplicação inteira não precisa estar atrelada a um conjunto de tecnologias específico.</li>
+  </ul>
+
+  <aside class="notes">
+    <h4>Vantagens dos Micro Serviços</h4>
+    <ul>
+      <li>Nota do instrutor: fale sobre os principais princípios de construir micro serviços</li>
+      <li>Cada serviço deve ter um objetivo e apenas focar nele.</li>
+      <li>Cada serviço deve ser capaz de rodar independentemente de outros serviços.</li>
+      <li>Cada serviço deve ser independentemente atualizável e substituível.</li>
+      <li>Cada serviço deve ser leve e rápido para desenvolver.</li>
+      <li>Serviços interagem com outros expondo uma API.</li>
+    </ul>
+  </aside>
+
+</section>
+
+<section>
+
+  <h2>Docker Compose e Micro Serviços</h2>
+  <p><img src="docker-img/Microservices and Containers.PNG" alt="Microservices and Containers"></p>
+
+  <aside class="notes">
+    <h3>Notas do instrutor:</h3>
+    <ul>
+      <li>Com uma arquitetura de micro serviços, você constrói a sua aplicação como um conjunto de serviços independentes que podem funcionar por conta própria. Estes serviços irão conversar entre si, mas o</li>
+      <li>princípio fundamental é que:</li>
+      <ul>
+        <li>Cada serviço deve ter um objetivo e se focar apenas nesse objetivo. Neste exemplo, as ordens de serviço farão pedidos para itens que os clientes compram.</li>
+        <li>O serviço Inventário vai procurar um item do inventário.</li>
+        <li>Outros serviços para este exemplo de aplicação podem ser pagamentos, pesquisa, autenticação de usuário etc.</li>
+      </ul>
+      <li>Containers podem estar no mesmo ou em diferentes hosts.</li>
+      <li>Use o Compose para prender tudo junto e lançar a aplicação.</li>
+      <li>Swarm pode ser usado para escalar os containers. Por exemplo, você pode escalar ordem de serviço, de modo que há 4 recipientes para executá-lo e com carga balanceada.</li>
+    </ul>
+  </aside>
+
+</section>
+
+<section>
+  <h2>Arquivo Compose YML</h2>
+  <ul>
+      <li>Define os serviços que compõem a sua aplicação.</li>
+      <li>Cada serviço contém instruções para contruir e executar um container.</li>
+      <li>Formato V1 e V2</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Formato do arquivo YML versão 1</h2>
+  <pre>
+javaclient:
+  build: .
+  command: java HelloWorld
+  links:
+    - redis
+redis:
+  image: redis
+  </pre>
+</section>
+
+<section>
+
+  <h2>Formato do arquivo YML versão 2</h2>
+  <pre>
+version: '2'
+
+services:
+  javaclient:
+    build: .
+  redisdb:
+    image: redis
+  </pre>
+
+  <aside class="notes"><p>Notas para o instrutor: Versão 2 é o novo formato intruduzido no Docker Compose 1.6. Entretanto, o formato versão 1 ainda é suportado. Talvez, você ainda encontre arquivos compose escritos no formato v1.</p></aside>
+</section>
+
+<!-- <section>
+  <h3>Kitematic para Mac OS X</h3>
+  <img src="docker-img/kinematic_1.png" style="width: 40%;">
+  <img src="docker-img/kinematic_2.png" style="width: 40%;">
+  <p>
+    Atualmente em <strong>BETA</strong>.
+  </p>
+</section> -->
+
+<section>
+  <h3>Possível Workflow</h3>
+    <img src="docker-img/workflow.png">
+  </p>
+</section>
+
+<section>
+  <h1>Hora do Demo</h1>
+  <p>
+    <img src="docker-img/demo.png">
+  </p>
+</section>
+
+<section>
+  <h3>Quer aprender mais?</h3>
+  <ul>
+    <li>Documentação oficial: <a href="http://docs.docker.com/">docs.docker.com</a></li>
+    <li>Hub: <a href="http://hub.docker.com/">hub.docker.com</a></li>
+    <li>Cloud: <a href="http://cloud.docker.com>">cloud.docker.com</a></li>
+    <li>Github: <a href="http://github.com/dotcloud/docker">dotcloud/docker</a></li>
+    <li>Google Group: <a href="https://groups.google.com/forum/#!forum/docker-user">docker-user</a></li>
+    <li>Twitter: <a href="http://twitter.com/docker">@docker</a></li>
+    <li>Encontros: <a href="http://www.docker.io/meetups">www.docker.io/meetups</a></li>
+  </ul>
 </section>
 
 </div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.min.js"></script>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
 
-		<script>
+    <script>
 
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
 
-				width: 1366,
-				height: 768,
-				margin: 0.1,
-				minScale: 0.2,
-				maxScale: 1.2,
+        width: 1366,
+        height: 768,
+        margin: 0.1,
+        minScale: 0.2,
+        maxScale: 1.2,
 
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber: 'c/t',
 
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
 
-				// Parallax scrolling
-				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-				// parallaxBackgroundSize: '2100px 900px',
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
 
-				// Optional libraries used to extend on reveal.js
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-				]
-			});
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
 
-		</script>
+    </script>
 
-	</body>
+  </body>
 </html>
